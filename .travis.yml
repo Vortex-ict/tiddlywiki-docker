@@ -1,0 +1,26 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before install:
+  # build the prod docker images
+  - docker build -t vortexict/tiddlywiki5_rv .
+  # Login on docker hub for pushing the docker images. Creds are in TRAVIS-CI under repo settings env var
+  - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
+  # push the images to docker hub
+  - docker push vortexict/tiddlywiki5_rv
+  
+
+# deploy:
+#   edge: true
+#   provider: elasticbeanstalk
+#   region: "eu-west-1"
+#   app: "docker-multi-cont-app-feb"
+#   env: ""
+#   bucket_name: "elasticbeanstalk-eu-west-***"
+#   bucket_path: "docker-multi-cont-app-feb"
+#   on:
+#     branch: master  
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY

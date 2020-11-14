@@ -1,0 +1,12 @@
+NODE_PORT=$(k get svc nginx-service -o=jsonpath="{$.spec.ports[0].nodePort}{'\n'}")
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Vortex-ict/tiddlywiki-docker.git
+git push -u origin main
+
+guhmyb-diSjux-cyzji2
+
+git remote set-url origin  https://"info@vortex-ict.nl":guhmyb-diSjux-cyzji2@github.com/"info@vortex-ict.nl"/jenkins-docker.git
